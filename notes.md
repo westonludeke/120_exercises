@@ -1,3 +1,16 @@
+### Medium 1
+
+1. Easy
+2. Hard
+3. Easy
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
 ### Debugging
 
 1. Hard - no solution
@@ -9,7 +22,7 @@
 7. Easy - but I remembered the solution
 8. Hard - solved it
 9. Medium - solved it
-10.
+10. Hard - didn't solve and very confusing solution
 
 ### Easy 2
 
