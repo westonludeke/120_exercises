@@ -1,87 +1,59 @@
-module Walkable
-  def walk
-    puts "#{@name} #{gait} forward"
-  end
-end
+class AuthenticationError < Exception; end
 
-class Person
-  include Walkable
+# A mock search engine
+# that returns a random number instead of an actual count.
+class SearchEngine
+  def self.count(query, api_key)
+    unless valid?(api_key)
+      raise AuthenticationError, 'API key is not valid.'
+    end
 
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
+    rand(200_000)
   end
 
   private
 
-  def gait
-    "strolls"
+  def self.valid?(key)
+    key == 'LS1A'
   end
 end
 
-class Cat
-  include Walkable
+module DoesItRock
+  API_KEY = 'LS1A'
 
-  attr_reader :name
+  class NoScore; end
 
-  def initialize(name)
-    @name = name
+  class Score
+    def self.for_term(term)
+      positive = SearchEngine.count(%{"#{term} rocks"}, API_KEY).to_f
+      negative = SearchEngine.count(%{"#{term} is not fun"}, API_KEY).to_f
+
+      positive / (positive + negative)
+    rescue Exception
+      NoScore
+    end
   end
 
-  private
+  def self.find_out(term)
+    score = Score.for_term(term)
 
-  def gait
-    "saunters"
-  end
-end
-
-class Cheetah
-  include Walkable
-
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
-  end
-
-  private
-
-  def gait
-    "runs"
-  end
-end
-
-class Noble
-  include Walkable
-
-  def initialize(name, title)
-    @name = name
-    @title = title
-  end
-
-  def gait
-    "struts"
-  end
-
-  def walk
-    "#{@title} #{@name} #{gait} forward"
+    case score
+    when NoScore
+      "No idea about #{term}..."
+    when 0...0.5
+      "#{term} is not fun."
+    when 0.5
+      "#{term} seems to be ok..."
+    else
+      "#{term} rocks!"
+    end
+  rescue Exception => e
+    e.message
   end
 end
 
-mike = Person.new("Mike")
-mike.walk
-# => "Mike strolls forward"
+# Example (your output may differ)
 
-kitty = Cat.new("Kitty")
-kitty.walk
-# => "Kitty saunters forward"
-
-flash = Cheetah.new("Flash")
-flash.walk
-# => "Flash runs forward"
-
-byron = Noble.new("Byron", "Lord")
-p byron.walk
-# => "Lord Byron struts forward"
-
+puts DoesItRock.find_out('Sushi')       # Sushi seems to be ok...
+puts DoesItRock.find_out('Rain')        # Rain is not fun.
+puts DoesItRock.find_out('Bug hunting') # Bug hunting rocks!

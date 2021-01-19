@@ -1,14 +1,14 @@
 ### Debugging
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
+1. Hard - no solution
+2. Easy
+3. Hard - no solution
+4. Easy
+5. Mediun - had a solution but redo
+6. Easy - but I remembered the solution
+7. Easy - but I remembered the solution
+8. Hard - solved it
+9. Medium - solved it
 10.
 
 ### Easy 2
