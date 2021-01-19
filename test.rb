@@ -1,35 +1,37 @@
-class Banner
-  def initialize(message)
-    @message = message
+class Vehicle
+  attr_reader :make, :model
+
+  def initialize(make, model)
+    @make = make
+    @model = model
   end
 
   def to_s
-    [horizontal_rule, empty_line, message_line, empty_line, horizontal_rule].join("\n")
-  end
-
-  private
-
-  def horizontal_rule
-    "+-" + ("-" * @message.length) + "-+"
-  end
-
-  def empty_line
-    "| " + (" " * @message.length) + " |"
-  end
-
-  def message_line
-    "| #{@message} |"
+    "#{make} #{model}"
   end
 end
 
-banner = Banner.new('To boldly go where no one has gone before.')
-puts banner
+class Car < Vehicle
+  def wheels
+    4
+  end
+end
 
-banner = Banner.new('')
-puts banner
+class Motorcycle < Vehicle
+  def wheels
+    2
+  end
+end
 
-# +--+
-# |  |
-# |  |
-# |  |
-# +--+
+class Truck < Vehicle
+  attr_reader :payload
+
+  def initialize(make, model, payload)
+    super(make, model)
+    @payload = payload
+  end
+
+  def wheels
+    6
+  end
+end

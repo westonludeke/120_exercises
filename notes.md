@@ -1,6 +1,6 @@
-### Easy 1
+### Easy 2
 
-1. Medium
+1.
 2.
 3.
 4.
@@ -10,6 +10,19 @@
 8.
 9.
 10.
+
+### Easy 1
+
+1. Medium - solved it
+2. Easy - redo
+3. Easy
+4. Easy
+5. Easy
+6. Med - redo
+7. Easy
+8. Easy - Redo
+9. Easy
+10. Easy
 
 ### OO Basics - Accessor Methods
 
