@@ -1,4 +1,4 @@
-### Easy 2
+### Debugging
 
 1.
 2.
@@ -10,6 +10,19 @@
 8.
 9.
 10.
+
+### Easy 2
+
+1. Easy
+2. Easy
+3. Easy
+4. Easy
+5. Easy
+6. Easy
+7. Hard - redo
+8. Easy
+9. Easy
+10. Medium - solve it, maybe redo
 
 ### Easy 1
 

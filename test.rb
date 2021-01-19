@@ -1,37 +1,87 @@
-class Vehicle
-  attr_reader :make, :model
-
-  def initialize(make, model)
-    @make = make
-    @model = model
-  end
-
-  def to_s
-    "#{make} #{model}"
+module Walkable
+  def walk
+    puts "#{@name} #{gait} forward"
   end
 end
 
-class Car < Vehicle
-  def wheels
-    4
+class Person
+  include Walkable
+
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  private
+
+  def gait
+    "strolls"
   end
 end
 
-class Motorcycle < Vehicle
-  def wheels
-    2
+class Cat
+  include Walkable
+
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  private
+
+  def gait
+    "saunters"
   end
 end
 
-class Truck < Vehicle
-  attr_reader :payload
+class Cheetah
+  include Walkable
 
-  def initialize(make, model, payload)
-    super(make, model)
-    @payload = payload
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
   end
 
-  def wheels
-    6
+  private
+
+  def gait
+    "runs"
   end
 end
+
+class Noble
+  include Walkable
+
+  def initialize(name, title)
+    @name = name
+    @title = title
+  end
+
+  def gait
+    "struts"
+  end
+
+  def walk
+    "#{@title} #{@name} #{gait} forward"
+  end
+end
+
+mike = Person.new("Mike")
+mike.walk
+# => "Mike strolls forward"
+
+kitty = Cat.new("Kitty")
+kitty.walk
+# => "Kitty saunters forward"
+
+flash = Cheetah.new("Flash")
+flash.walk
+# => "Flash runs forward"
+
+byron = Noble.new("Byron", "Lord")
+p byron.walk
+# => "Lord Byron struts forward"
+
